@@ -1,0 +1,10 @@
+.itemContainer {
+    display: flex;
+    flex-direction: column;
+}
+.circle {
+    width: 40px;
+    height: 40px;
+    background-color: gold;
+    border-radius: 50%;
+}

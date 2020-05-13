@@ -13,3 +13,11 @@
 .item a.activeLink {
     color: gold;
 }
+.friendsContainer {
+    margin-top: 15rem;
+}
+
+.friendsItem {
+    display: flex;
+    justify-content: space-around;
+}

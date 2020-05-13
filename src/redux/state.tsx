@@ -15,47 +15,97 @@ export type MessagesDataType = {
 }
 
 export type ProfilePageType = {
-    postData: Array<PostDataType>,
-    dialogData: Array<DialogsDataType>
+    postData: Array<PostDataType>
+    newPostText:string
 }
 
+export type SideBarType = {
+    name: string
+}
+
+
 export type MessagesPageType = {
-    messagesData: Array<MessagesDataType>
+    messagesData: Array<MessagesDataType>,
+    dialogData: Array<DialogsDataType>,
+    newMessageBody: string
 }
 export type StateType = {
     profilePage: ProfilePageType,
-    messagesPage: MessagesPageType
+    messagesPage: MessagesPageType,
+    sidebar: Array<SideBarType>
+
+}
+export type StoreType = {
+    _state: StateType
+    addPost: Function
+    updateNewPostText: Function
+    getState: Function
+    _callSubscriber: Function
+    subscribe:Function
 
 }
 
+let store: StoreType = {
+    _state: {
+        profilePage: {
+            postData: [
+                {id: 1, message: 'hi', likesCount: 12},
+                {id: 2, message: 'its my first post', likesCount: 13},
+                {id: 3, message: 'its my second post', likesCount: 14},
+                {id: 4, message: 'its my three post', likesCount: 15}
+            ],
+            newPostText: 'it-kamasutra'
+        },
 
-let state: StateType = {
-    profilePage: {
-        postData: [
-            {id: 1, message: 'hi', likesCount: 12},
-            {id: 2, message: 'its my first post', likesCount: 13},
-            {id: 3, message: 'its my second post', likesCount: 14},
-            {id: 4, message: 'its my three post', likesCount: 15}
-        ],
-        dialogData: [
-            {id: 1, name: 'Dima'},
-            {id: 2, name: 'Andrei'},
-            {id: 3, name: 'Sveta'},
-            {id: 4, name: 'Sacha'}
+        messagesPage: {
+            messagesData:
+                [
+                    {id: 1, message: 'Hi'},
+                    {id: 2, message: 'yoyoyo'},
+                    {id: 3, message: 'Wai'},
+                    {id: 4, message: 'yoyoyooyoy'}
+                ],
+            dialogData: [
+                {id: 1, name: 'Dima'},
+                {id: 2, name: 'Andrei'},
+                {id: 3, name: 'Sveta'},
+                {id: 4, name: 'Sacha'}
+            ],
+            newMessageBody: ''
+        },
+        sidebar: [
+            {name: 'Andrew'},
+            {name: 'Sasha'},
+            {name: 'Sveta'}
         ]
     },
-    messagesPage: {
-        messagesData:
-            [
-                {id: 1, message: 'Hi'},
-                {id: 2, message: 'yoyoyo'},
-                {id: 3, message: 'Wai'},
-                {id: 4, message: 'yoyoyooyoy'}
-            ]
-    }
+    getState() {
+        return this._state
+    },
+    addPost() {
+        let newPost = {
+            id: 5,
+            message:this._state.profilePage.newPostText,
+            likesCount: 0
+        }
+        this._state.profilePage.postData.push(newPost)
+        this._state.profilePage.newPostText = ''
+        this._callSubscriber(this._state)
+    },
+    updateNewPostText (newText:any) {
+        this._state.profilePage.newPostText = newText
+        this._callSubscriber(this._state)
+    },
+    subscribe (observer:any) {
+        this._callSubscriber = observer
+    },
+    _callSubscriber() {
+        console.log('State changed')
+    },
+
 }
 
-export default state
-// postData: Array<PostDataType>,
-//     dialogData: Array<DialogsDataType>,
-//     messagesData: Array<MessagesDataType>
+
+export default store
+
+window.store = store
