@@ -5,26 +5,28 @@ import {PostDataType} from "../../../redux/state";
 
 
 export type PropsType = {
-    postdata: Array<PostDataType>
-    addPost: Function
-    updateNewPostText: Function
-    newPostText: string
+    profilePage: {
+        postData: Array<PostDataType>,
+        newPostText: string
+    }
+    dispatch: Function
+
 }
 
 const MyPosts = (props: PropsType) => {
 
     let postElement =
-        props.postdata.map(post => <Post message={post.message} likesCount={post.likesCount}/>)
+        props.profilePage.postData.map(post => <Post message={post.message} likesCount={post.likesCount}/>)
 
     let newPostElement: any = React.createRef()
 
     const addPost = () => {
-        debugger
-        props.addPost()
+        props.dispatch({type: 'ADD-POST'})
     }
     const onPostChange = () => {
         let text = newPostElement.current.value
-        props.updateNewPostText(text)
+        let action = {type: 'UPDATE-NEW-POST-TEXT', newText:text};
+        props.dispatch(action)
     }
 
 
@@ -35,7 +37,7 @@ const MyPosts = (props: PropsType) => {
                 <div>
                  <textarea onChange={onPostChange}
                            ref={newPostElement}
-                           value={props.newPostText}
+                           value={props.profilePage.newPostText}
 
                  />
                 </div>

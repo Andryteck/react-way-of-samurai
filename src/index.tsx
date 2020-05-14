@@ -3,17 +3,17 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import store from "./redux/state";
+import store, {StateType} from "./redux/state";
 import {StoreType} from "./redux/state";
 
 
-let rerenderEntireTree = (state: any) => {
+let rerenderEntireTree = (_state:StateType) => {
 
     ReactDOM.render(
         <React.StrictMode>
-            <App state={state}
-                 addPost={store.addPost.bind(store)}
-                 updateNewPostText={store.updateNewPostText.bind(store)}
+            <App _state={store._state}
+                 dispatch={store.dispatch.bind(store)}
+                 // updateNewPostText={store.updateNewPostText.bind(store)}
             />
         </React.StrictMode>,
         document.getElementById('root')
