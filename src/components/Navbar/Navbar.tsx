@@ -1,7 +1,7 @@
 import React from 'react';
 import s from './Navbar.module.css';
 import {NavLink} from "react-router-dom";
-import {StateType} from "../../redux/state";
+import {StateType} from "../../redux/store";
 import Friends from "./Friends/Friends";
 
 type PropsType = {
