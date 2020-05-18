@@ -3,17 +3,18 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import {StateType} from "./redux/store";
-import store from './redux/redux-store'
-import {StoreType} from "./redux/store";
+import store, {RootState} from './redux/redux-store'
 
 
-let rerenderEntireTree = (state:any) => {
+
+
+let rerenderEntireTree = (state:RootState) => {
 
     ReactDOM.render(
         <React.StrictMode>
-            <App state={store.state}
+            <App state={state}
                  dispatch={store.dispatch.bind(store)}
+                 // store={store}
             />
         </React.StrictMode>,
         document.getElementById('root')

@@ -11,9 +11,11 @@ import Settings from './components/Settings/Settings';
 import {PostDataType, StateType} from './redux/store'
 
 
+
 type PropsType = {
-    state:StateType
     dispatch:Function
+    state: StateType
+
 }
 
 

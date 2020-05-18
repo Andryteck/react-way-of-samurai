@@ -1,7 +1,20 @@
+export type SideBarNameType = {
+    name: string
+}
 
-let initialState = {}
+type SideBarType =
+    Array<SideBarNameType>
 
-const sidebarReducer = (state = initialState, action:any) => {
+
+let initialState: SideBarType =
+    [
+        {name: 'Andrew'},
+        {name: 'Sasha'},
+        {name: 'Sveta'}
+    ]
+
+
+const sidebarReducer = (state = initialState, action: any) => {
 
     return state
 }
