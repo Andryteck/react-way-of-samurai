@@ -1,34 +1,35 @@
 import React from 'react';
 import s from './MyPosts.module.css';
 import Post from './Post/Post';
-import {addPostActionCreator, updateNewPostTextActionCreator} from "../../../redux/profile-reducer";
-import {PostDataType} from "../../../redux/store";
+import {addPostActionCreator, updateNewPostTextActionCreator, PostDataType} from "../../../redux/profile-reducer";
 
 
 export type PropsType = {
-    profilePage: {
+    postData: {
         postData: Array<PostDataType>,
         newPostText: string
     }
-    dispatch: Function
-
+    // newPostText: string
+    updateNewPostText: (text: string) => void,
+    addPost: () => void
 }
 
 
 const MyPosts = (props: PropsType) => {
-
+    debugger
     let postElement =
-        props.profilePage.postData.map(post => <Post message={post.message} likesCount={post.likesCount}/>)
+        props.postData.postData.map((post: any) => <Post message={post.message} likesCount={post.likesCount}/>)
 
     let newPostElement: any = React.createRef()
 
-    const addPost = () => {
-        props.dispatch(addPostActionCreator())
+    const onAddPost = () => {
+        props.addPost()
     }
     const onPostChange = () => {
+        debugger
         let text = newPostElement.current.value
-        let action =updateNewPostTextActionCreator(text);
-        props.dispatch(action)
+        props.updateNewPostText(text)
+
     }
 
 
@@ -39,12 +40,12 @@ const MyPosts = (props: PropsType) => {
                 <div>
                  <textarea onChange={onPostChange}
                            ref={newPostElement}
-                           value={props.profilePage.newPostText}
+                           value={props.postData.newPostText}
 
                  />
                 </div>
                 <div>
-                    <button onClick={addPost}>Add post</button>
+                    <button onClick={onAddPost}>Add post</button>
                 </div>
             </div>
             <div className={s.posts}>

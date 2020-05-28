@@ -1,32 +1,42 @@
-import React from 'react';
+import React, { ChangeEvent } from 'react';
 import s from './Dialogs.module.css'
 import {NavLink} from "react-router-dom";
 import DialogItem from './DialogItem/DialogItem'
 import Message from "./Message/Message";
-import {sendMessageCreator, updateNewMessageBodyCreator
+import {
+    sendMessageCreator, updateNewMessageBodyCreator
 } from "../../redux/dialogs-reducer";
-import { StateType } from '../../redux/store';
+import {MessagesPageType, } from '../../redux/store';
+import {RootState} from "../../redux/redux-store";
 
 
 export type PropsType = {
-    state: StateType
-    dispatch: Function
+    messagesPage: MessagesPageType
+    updateNewMessageBody: (message: string)=> void
+    sendMessage: ()=>void
 
 }
 
 const Dialogs = (props: PropsType) => {
 
-    let dialogElement = props.state.messagesPage.dialogData.map(dialog => <DialogItem name={dialog.name}
+    let dialogElement = props.messagesPage.dialogData.map(dialog => <DialogItem name={dialog.name}
                                                                                       id={dialog.id}/>)
-    let messagesElement = props.state.messagesPage.messagesData.map(message => <Message message={message.message}/>)
-    let newMessageBody = props.state.messagesPage.newMessageBody
-    let onSendMessageClick = () => {
-        props.dispatch(sendMessageCreator())
+    let messagesElement = props.messagesPage.messagesData.map(message => <Message message={message.message}/>)
+    let newMessageBody = props.messagesPage.newMessageBody
+
+
+    let onNewMessageChange = (e:ChangeEvent<HTMLTextAreaElement>) => {
+        debugger
+        props.updateNewMessageBody(e.currentTarget.value)
+
+
+
     }
-    let onNewMessageChange = (e: any) => {
-        let body = e.target.value
-        props.dispatch(updateNewMessageBodyCreator(body))
+    let sendMessage = () => {
+        props.sendMessage()
+
     }
+
     return (
         <div className={s.dialogs}>
             <div className={s.dialogsItems}>
@@ -42,7 +52,7 @@ const Dialogs = (props: PropsType) => {
                                       placeholder={'enter you message'}>
                             </textarea></div>
                         <div>
-                            <button onClick={onSendMessageClick}>send</button>
+                            <button onClick={sendMessage}>send</button>
                         </div>
                     </div>
                 </div>

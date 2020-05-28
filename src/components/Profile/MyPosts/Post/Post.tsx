@@ -2,8 +2,8 @@ import React from 'react';
 import s from './Post.module.css';
 
 type propsType = {
-    message?: string,
-    likesCount?: number,
+    message: string,
+    likesCount: number,
     id?: number
 }
 

@@ -4,16 +4,12 @@ import {NavLink} from "react-router-dom";
 import Friends from "./Friends/Friends";
 import { SideBarNameType } from '../../redux/sidebar-reducer';
 
-type PropsType = {
-    state:  {
-        sidebar:Array<SideBarNameType>
-    }
-}
 
 
-const Navbar = (props: PropsType) => {
-    debugger
-    let sideBar = props.state.sidebar.map(item => <Friends name={item.name}/>)
+
+const Navbar = () => {
+
+    // let sideBar = props.state.sidebar.map(item => <Friends name={item.name}/>)
 
     return (
         <nav className={s.nav}>
@@ -35,7 +31,7 @@ const Navbar = (props: PropsType) => {
             <div className={s.friendsContainer}>
                 <h2>Friends</h2>
                 <div className={s.friendsItem}>
-                    {sideBar}
+                    {/*{sideBar}*/}
                 </div>
             </div>
         </nav>
