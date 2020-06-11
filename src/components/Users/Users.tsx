@@ -1,23 +1,45 @@
 import React from 'react';
 import styles from './users.module.css'
-import {UserType} from '../../redux/users-reducer';
+import userImage from '../../assets/images/user.jpg'
+
 
 type PropsType = {
-    users: Array<UserType>,
+    users: Array<any>,
     follow: (userId: number) => void,
     unfollow: (userId: number) => void,
-    setUser: (users: Array<UserType>) => void
+    // setUserPage: (pageNumber: number) => void
+    currentPage: number
+    totalUsersCount: number
+    pageSize: number
+    onPageChanged:(p:number) => void
+
 }
 
 const Users = (props: PropsType) => {
 
+    let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize)
+    let pages = [];
+    for (let i = 1; i <= pagesCount; i++) {
+        pages.push(i)
+    }
+
     return (
         <div>
+            <div>
+                {
+                    pages.map((p: number) => <button onClick={(e) => {
+                            props.onPageChanged(p)
+                        }} className={props.currentPage === p ? styles.selectedPage : ''}>{p}</button>
+                    )}
+
+            </div>
+
             {
-                props.users.map(u => <div key={u.id}>
+                props.users.map((u: any) => <div key={u.id}>
                     <span>
                         <div>
-                            <img className={styles.usersPhoto} src={u.photoUrl}/>
+                            <img className={styles.usersPhoto}
+                                 src={u.photos.small !== null ? u.photos.small : userImage}/>
                         </div>
                         <div>
                             {u.followed
@@ -28,12 +50,12 @@ const Users = (props: PropsType) => {
                     </span>
                     <span>
                         <span>
-                            <div>{u.fullName}</div>
+                            <div>{u.name}</div>
                             <div>{u.status}</div>
                         </span>
                         <span>
-                            <div>{u.location.city}</div>
-                            <div>{u.location.city}</div>
+                            <div>{'u.location.city'}</div>
+                            <div>{'u.location.city'}</div>
                         </span>
                     </span>
                 </div>)

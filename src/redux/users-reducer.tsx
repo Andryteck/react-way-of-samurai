@@ -1,13 +1,22 @@
+import {act} from "react-dom/test-utils";
+
 const FOLLOW: string = 'FOLLOW'
 const UNFOLLOW: string = 'UNFOLLOW'
 const SET_USERS: string = 'SET_USERS'
+const SET_CURRENT_PAGE: string = 'SET_CURRENT_PAGE'
+const SET_TOTAL_USERS_COUNT: string = 'SET_TOTAL_USERS_COUNT'
+const TOGGLE_IS_FETCHING = 'TOGGLE_IS_FETCHING'
 
 export type UsersPageType = {
     users: Array<UserType>
+    pageSize: number,
+    totalUsersCount: number
+    currentPage: number
+    isFetching: boolean
 }
 export type UserType = {
     id: number,
-    photoUrl:string,
+    photoUrl: string,
     followed: boolean,
     fullName: string,
     status: string,
@@ -20,40 +29,11 @@ export type UserType = {
 
 
 let initialState: UsersPageType = {
-    users: [
-        // {
-        //     id: 1,
-        //     photoUrl: "https://images-na.ssl-images-amazon.com/images/I/51AfxBQmFLL._AC_.jpg",
-        //     followed: false,
-        //     fullName: 'Dmitriy',
-        //     status: 'I am a boss',
-        //     location: {city: 'Moscow', country: 'Russia'}
-        // },
-        // {
-        //     id: 2,
-        //     photoUrl: "https://images-na.ssl-images-amazon.com/images/I/51AfxBQmFLL._AC_.jpg",
-        //     followed: true,
-        //     fullName: 'Andrei',
-        //     status: 'I am a students',
-        //     location: {city: 'Minsk', country: 'Belarus'}
-        // },
-        // {
-        //     id: 3,
-        //     photoUrl: "https://images-na.ssl-images-amazon.com/images/I/51AfxBQmFLL._AC_.jpg",
-        //     followed: true,
-        //     fullName: 'Sveta',
-        //     status: 'I am awife',
-        //     location: {city: 'Minsk', country: 'Belarus'}
-        // },
-        // {
-        //     id: 4,
-        //     photoUrl: "https://images-na.ssl-images-amazon.com/images/I/51AfxBQmFLL._AC_.jpg",
-        //     followed: true,
-        //     fullName: 'Froga',
-        //     status: 'I am a Frog',
-        //     location: {city: 'Minsk', country: 'Belarus'}
-        // }
-    ]
+    users: [],
+    pageSize: 5,
+    totalUsersCount: 0,
+    currentPage: 1,
+    isFetching: false
 }
 
 
@@ -82,7 +62,22 @@ export const usersReducer = (state = initialState, action: any) => {
         case SET_USERS:
             return {
                 ...state,
-                users: [...state.users, ...action.users]
+                users: action.users
+            }
+        case SET_CURRENT_PAGE:
+            return {
+                ...state,
+                currentPage: action.currentPage
+            }
+        case SET_TOTAL_USERS_COUNT:
+            return {
+                ...state,
+                totalUsersCount: action.count
+            }
+        case TOGGLE_IS_FETCHING:
+            return {
+                ...state,
+                isFetching: action.isFetching
             }
         default:
             return state
@@ -98,4 +93,13 @@ export const unfollowAC = (userId: number) => ({
 })
 export const setUsersAC = (users: any) => ({
     type: SET_USERS, users
+})
+export const setCurrentPageAC = (currentPage:number) => ({
+    type: SET_CURRENT_PAGE, currentPage
+})
+export const setTotalUserCountAC = (totalUsersCount:number) => ({
+    type: SET_TOTAL_USERS_COUNT, count: totalUsersCount
+})
+export const setIsFetchingAC = (isFetching:boolean) => ({
+    type: TOGGLE_IS_FETCHING, isFetching: isFetching
 })
