@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from './users.module.css'
 import userImage from '../../assets/images/user.jpg'
+import {NavLink} from 'react-router-dom';
 
 
 type PropsType = {
@@ -11,7 +12,7 @@ type PropsType = {
     currentPage: number
     totalUsersCount: number
     pageSize: number
-    onPageChanged:(p:number) => void
+    onPageChanged: (p: number) => void
 
 }
 
@@ -38,8 +39,10 @@ const Users = (props: PropsType) => {
                 props.users.map((u: any) => <div key={u.id}>
                     <span>
                         <div>
+                            <NavLink to={'./profile/' + u.id}>
                             <img className={styles.usersPhoto}
                                  src={u.photos.small !== null ? u.photos.small : userImage}/>
+                                  </NavLink>
                         </div>
                         <div>
                             {u.followed

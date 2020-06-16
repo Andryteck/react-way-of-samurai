@@ -26,15 +26,20 @@ const Dialogs = (props: PropsType) => {
 
 
     let onNewMessageChange = (e:ChangeEvent<HTMLTextAreaElement>) => {
-        debugger
         props.updateNewMessageBody(e.currentTarget.value)
 
 
 
     }
     let sendMessage = () => {
-        props.sendMessage()
-
+        if (newMessageBody) {
+            props.sendMessage()
+        }
+    }
+    const onKeyPressHandler = (e:any) => {
+        if (e.charCode === 13) {
+            props.sendMessage()
+        }
     }
 
     return (
@@ -49,6 +54,7 @@ const Dialogs = (props: PropsType) => {
                         <div>
                             <textarea value={newMessageBody}
                                       onChange={onNewMessageChange}
+                                      onKeyPress={onKeyPressHandler}
                                       placeholder={'enter you message'}>
                             </textarea></div>
                         <div>
