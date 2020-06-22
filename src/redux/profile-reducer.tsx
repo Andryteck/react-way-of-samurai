@@ -33,7 +33,6 @@ let initialState: ProfilePageType = {
 const profileReducer = (state = initialState, action: any) => {
     switch (action.type) {
         case ADD_POST:
-            debugger
             let newPost = {
                 id: 5,
                 message: state.newPostText,

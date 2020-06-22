@@ -21,6 +21,7 @@ import { withRouter } from 'react-router-dom';
 class ProfileContainer extends React.Component<any, any> {
 
     componentDidMount() {
+        debugger
         let userId = this.props.match.params.userId
         if (!userId) {
             userId = 2
@@ -29,7 +30,7 @@ class ProfileContainer extends React.Component<any, any> {
             .then(response => {
                 this.props.setUserProfile(response.data)
             })
-        
+
     }
 
     render() {
