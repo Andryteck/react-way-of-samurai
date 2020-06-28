@@ -24,11 +24,6 @@ export type SideBarType = {
 }
 
 
-export type MessagesPageType = {
-    messagesData: Array<MessagesDataType>,
-    dialogData: Array<DialogsDataType>,
-    newMessageBody: string
-}
 // export type StateType = {
 //     profilePage: ProfilePageType,
 //     messagesPage: MessagesPageType,

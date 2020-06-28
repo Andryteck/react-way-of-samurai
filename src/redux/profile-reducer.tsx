@@ -1,3 +1,4 @@
+import { usersAPI } from "../api/Api";
 
 
 
@@ -78,5 +79,11 @@ export let updateNewPostTextActionCreator = (text: string) => ({
 export let setUserProfile = (profile: any) => ({
     type: SET_USER_PROFILE, profile: profile
 })
+export let getUserProfile = (userId: number) => (dispatch: Function) => {
+    usersAPI.getProfile(userId).then(response => {
+        dispatch(setUserProfile(response.data))
+    })
+}
+
 
 export default profileReducer

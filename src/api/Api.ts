@@ -28,5 +28,15 @@ export const usersAPI = {
             // .then(response => {
             //     return response.data
             // })
+    },
+    getProfile(userId:number) {
+       return instance.get(`https://social-network.samuraijs.com/api/1.0/profile/`+ userId)
+
     }
 }
+
+export const authAPI = {
+    me() { return  instance.get(`/auth/me`, {})
+    }
+}
+

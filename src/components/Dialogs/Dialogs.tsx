@@ -1,20 +1,16 @@
 import React, { ChangeEvent } from 'react';
 import s from './Dialogs.module.css'
-import {NavLink} from "react-router-dom";
+import {NavLink, Redirect} from "react-router-dom";
 import DialogItem from './DialogItem/DialogItem'
 import Message from "./Message/Message";
-import {
-    sendMessageCreator, updateNewMessageBodyCreator
-} from "../../redux/dialogs-reducer";
-import {MessagesPageType, } from '../../redux/store';
-import {RootState} from "../../redux/redux-store";
+import {MessagesPageType, } from '../../redux/dialogs-reducer';
 
 
 export type PropsType = {
     messagesPage: MessagesPageType
     updateNewMessageBody: (message: string)=> void
     sendMessage: ()=>void
-
+    isAuth: boolean
 }
 
 const Dialogs = (props: PropsType) => {
@@ -28,9 +24,8 @@ const Dialogs = (props: PropsType) => {
     let onNewMessageChange = (e:ChangeEvent<HTMLTextAreaElement>) => {
         props.updateNewMessageBody(e.currentTarget.value)
 
-
-
     }
+    if (!props.isAuth) return <Redirect to={'/login'} />
     let sendMessage = () => {
         if (newMessageBody) {
             props.sendMessage()
