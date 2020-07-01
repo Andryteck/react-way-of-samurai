@@ -4,11 +4,12 @@ import PreLoader from "../../common/Prelouder/Preloader";
 import ProfileStatus from './ProfileStatus'
 
 type PropsType = {
-    profile:any
+    profile:any,
+    status: string,
+    updateStatus: (status: string) => void
 }
 
 const ProfileInfo = (props:PropsType) => {
-    debugger
     if (!props.profile) {
         return <PreLoader />
     }
@@ -19,7 +20,7 @@ const ProfileInfo = (props:PropsType) => {
         {/*</div>*/}
     <div className={s.descriptionBlock}>
         <img src={props.profile.photos.large} />
-       <ProfileStatus status={'hello my friends'}/>
+       <ProfileStatus status={props.status} updateStatus={props.updateStatus}/>
     </div>
         </div>
 

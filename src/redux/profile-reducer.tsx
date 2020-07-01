@@ -1,15 +1,16 @@
-import { usersAPI } from "../api/Api";
-
+import {profileAPI, usersAPI} from "../api/Api";
 
 
 const ADD_POST: string = 'ADD-POST'
-const UPDATE_NEW_POST_TEXT: string = 'UPDATE-NEW-POST-TEXT';
-const SET_USER_PROFILE:string = 'SET_USER_PROFILE'
+const UPDATE_NEW_POST_TEXT: string = 'UPDATE-NEW-POST-TEXT'
+const SET_USER_PROFILE: string = 'SET_USER_PROFILE'
+const SET_STATUS = 'SET_STATUS'
 
 type ProfilePageType = {
     postData: Array<PostDataType>
     newPostText: string
     profile: any
+    status: string
 }
 
 export type PostDataType = {
@@ -27,7 +28,8 @@ let initialState: ProfilePageType = {
         {id: 4, message: 'its my three post', likesCount: 15}
     ],
     newPostText: 'it-kamasutra',
-    profile: null
+    profile: null,
+    status: ''
 }
 
 
@@ -63,6 +65,12 @@ const profileReducer = (state = initialState, action: any) => {
                 ...state,
                 profile: action.profile
             }
+        case SET_STATUS:
+            return {
+                ...state,
+                status: action.status
+            }
+
         default:
             return state
     }
@@ -79,9 +87,26 @@ export let updateNewPostTextActionCreator = (text: string) => ({
 export let setUserProfile = (profile: any) => ({
     type: SET_USER_PROFILE, profile: profile
 })
+export let setStatus = (status: string) => ({
+    type: SET_STATUS, status
+})
+
 export let getUserProfile = (userId: number) => (dispatch: Function) => {
     usersAPI.getProfile(userId).then(response => {
         dispatch(setUserProfile(response.data))
+    })
+}
+export let getStatus = (userId: number) => (dispatch: Function) => {
+    profileAPI.getStatus(userId).then(response => {
+        dispatch(setStatus(response.data))
+    })
+}
+export let updateStatus = (status: string) => (dispatch: Function) => {
+    profileAPI.updateStatus(status).then(response => {
+        if (response.data.resultCode === 1) {
+            dispatch(setStatus(response.data))
+        }
+
     })
 }
 

@@ -19,24 +19,36 @@ export const usersAPI = {
     },
     followUsers(userId: number) {
         return instance.post(`/follow/${userId}`, {})
-            // .then(response => {
-            //     return response.data
-            // })
+        // .then(response => {
+        //     return response.data
+        // })
     },
     unfollowUsers(userId: number) {
         return instance.delete(`/follow/${userId}`)
-            // .then(response => {
-            //     return response.data
-            // })
+        // .then(response => {
+        //     return response.data
+        // })
     },
-    getProfile(userId:number) {
-       return instance.get(`https://social-network.samuraijs.com/api/1.0/profile/`+ userId)
-
+    getProfile(userId: number) {
+        console.warn('Obsolete method. Please profileAPI object')
+        return profileAPI.getProfile(userId)
     }
 }
 
 export const authAPI = {
-    me() { return  instance.get(`/auth/me`, {})
+    me() {
+        return instance.get(`/auth/me`, {})
+    }
+}
+export const profileAPI = {
+    getProfile(userId: number) {
+        return instance.get(`profile/` + userId)
+    },
+    getStatus(userId: number) {
+        return instance.get(`profile/status/` + userId)
+    },
+    updateStatus(status:string) {
+        return instance.put(`profile/status/`, {status})
     }
 }
 

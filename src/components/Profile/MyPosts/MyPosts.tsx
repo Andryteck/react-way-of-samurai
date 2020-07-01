@@ -16,7 +16,6 @@ export type PropsType = {
 
 
 const MyPosts = (props: PropsType) => {
-    debugger
     let postElement =
         props.postData.postData.map((post: any) => <Post message={post.message} likesCount={post.likesCount}/>)
 
