@@ -2,13 +2,11 @@ import {profileAPI, usersAPI} from "../api/Api";
 
 
 const ADD_POST: string = 'ADD-POST'
-const UPDATE_NEW_POST_TEXT: string = 'UPDATE-NEW-POST-TEXT'
 const SET_USER_PROFILE: string = 'SET_USER_PROFILE'
 const SET_STATUS = 'SET_STATUS'
 
 type ProfilePageType = {
     postData: Array<PostDataType>
-    newPostText: string
     profile: any
     status: string
 }
@@ -27,7 +25,6 @@ let initialState: ProfilePageType = {
         {id: 3, message: 'its my second post', likesCount: 14},
         {id: 4, message: 'its my three post', likesCount: 15}
     ],
-    newPostText: 'it-kamasutra',
     profile: null,
     status: ''
 }
@@ -38,7 +35,7 @@ const profileReducer = (state = initialState, action: any) => {
         case ADD_POST:
             let newPost = {
                 id: 5,
-                message: state.newPostText,
+                message: action.newPostText,
                 likesCount: 1
             }
             return {
@@ -46,20 +43,6 @@ const profileReducer = (state = initialState, action: any) => {
                 postData: [...state.postData, newPost],
                 newPostText: ''
             }
-        // state.postData.push(newPost)
-        // state.newPostText = ''
-        // return state
-        case UPDATE_NEW_POST_TEXT:
-            return {
-                ...state,
-                newPostText: action.newText
-            }
-        // let copyState = {...state}
-        // copyState.postData = {...state.postData}
-        // copyState.newPostText = action.newText
-        // return copyState
-        // state.newPostText = action.newText
-        // return state
         case SET_USER_PROFILE:
             return {
                 ...state,
@@ -78,12 +61,10 @@ const profileReducer = (state = initialState, action: any) => {
 
 }
 
-export let addPostActionCreator = () => ({
-    type: ADD_POST
+export let addPostActionCreator = (newPostText:string) => ({
+    type: ADD_POST, newPostText
 })
-export let updateNewPostTextActionCreator = (text: string) => ({
-    type: UPDATE_NEW_POST_TEXT, newText: text
-})
+
 export let setUserProfile = (profile: any) => ({
     type: SET_USER_PROFILE, profile: profile
 })

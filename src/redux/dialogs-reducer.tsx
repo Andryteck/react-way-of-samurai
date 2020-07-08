@@ -1,15 +1,13 @@
-import {DialogsDataType, MessagesDataType } from "./store";
+import {DialogsDataType, MessagesDataType} from "./store";
 
-const UPDATE_NEW_MESSAGE_BODY: string = 'UPDATE_NEW_MESSAGE_BODY';
 const SEND_MESSAGE: string = 'SEND_MESSAGE';
 
 export type MessagesPageType = {
     messagesData: Array<MessagesDataType>,
     dialogData: Array<DialogsDataType>,
-    newMessageBody: string
 }
 
-let initialState:MessagesPageType = {
+let initialState: MessagesPageType = {
     messagesData:
         [
             {id: 1, message: 'Hi'},
@@ -22,32 +20,28 @@ let initialState:MessagesPageType = {
         {id: 2, name: 'Andrei'},
         {id: 3, name: 'Sveta'},
         {id: 4, name: 'Sacha'}
-    ],
-    newMessageBody: ''
+    ]
 }
 
 const dialogsReducer = (state = initialState, action: any) => {
     switch (action.type) {
-
-        case UPDATE_NEW_MESSAGE_BODY:
-            debugger
+        // case UPDATE_NEW_MESSAGE_BODY:
+        //     return {
+        //         ...state,
+        //         newMessageBody: action.body
+        //     }
+        // // state.newMessageBody = action.body
+        // // return state
+        case SEND_MESSAGE:
             return {
                 ...state,
-             newMessageBody: action.body
-            }
-            // state.newMessageBody = action.body
-            // return state
-        case SEND_MESSAGE:
-            return  {
-                ...state,
-                messagesData: [...state.messagesData, {id:100, message: state.newMessageBody}],
-                newMessageBody: ''
+                messagesData: [...state.messagesData, {id: 6, message: action.newMessageBody}],
             }
 
-            // let body = state.newMessageBody
-            // state.newMessageBody = ''
-            // state.messagesData.push({id: 5, message: body})
-            // return state
+        // let body = state.newMessageBody
+        // state.newMessageBody = ''
+        // state.messagesData.push({id: 5, message: body})
+        // return state
         default :
             return state
     }
@@ -55,12 +49,12 @@ const dialogsReducer = (state = initialState, action: any) => {
 
 }
 
-export let sendMessageCreator = () => ({
-    type: SEND_MESSAGE
+export let sendMessageCreator = (newMessageBody: string) => ({
+    type: SEND_MESSAGE, newMessageBody
 })
-export let updateNewMessageBodyCreator = (body: string) => ({
-    type: UPDATE_NEW_MESSAGE_BODY, body: body
-})
+// export let updateNewMessageBodyCreator = (body: string) => ({
+//     type: UPDATE_NEW_MESSAGE_BODY, body: body
+// })
 
 
 export default dialogsReducer
