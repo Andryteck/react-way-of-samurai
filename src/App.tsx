@@ -17,7 +17,7 @@ import {initializeApp} from "./redux/app-reducer";
 import PreLoader from "./components/common/Prelouder/Preloader";
 
 
-class App extends React.Component<any, any> {
+class App extends React.Component <any, any> {
     componentDidMount() {
         this.props.initializeApp()
     }
@@ -28,7 +28,7 @@ class App extends React.Component<any, any> {
         }
 
         return (
-            <BrowserRouter>
+
                 <div className='app-wrapper'>
                     <HeaderContainer/>
                     <Navbar/>
@@ -42,7 +42,8 @@ class App extends React.Component<any, any> {
                         <Route path='/login' render={() => <Login/>}/>
                     </div>
                 </div>
-            </BrowserRouter>)
+
+        )
     }
 }
 
@@ -51,5 +52,6 @@ const mstp = (state: RootState) => ({
 })
 
 export default compose(
+    connect(mstp, {initializeApp}),
     withRouter,
-    connect(mstp, {initializeApp}))(App)
+    )(App) as React.ComponentClass

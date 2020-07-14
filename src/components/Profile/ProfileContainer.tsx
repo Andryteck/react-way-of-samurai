@@ -3,7 +3,7 @@ import {RootState} from "../../redux/redux-store";
 import Profile from './Profile';
 import {connect} from 'react-redux';
 import {getStatus, getUserProfile, setUserProfile, updateStatus} from "../../redux/profile-reducer";
-import {Redirect, withRouter} from 'react-router-dom';
+import {withRouter} from 'react-router-dom';
 import {WithAuthRedirect} from "../../hoc/WithAuthRedirect";
 import {compose} from 'redux';
 

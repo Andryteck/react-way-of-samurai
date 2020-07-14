@@ -2,15 +2,16 @@ import React from 'react';
 import s from './Navbar.module.css';
 import {NavLink} from "react-router-dom";
 import Friends from "./Friends/Friends";
-import { SideBarNameType } from '../../redux/sidebar-reducer';
-
-
+import {SideBarNameType} from '../../redux/sidebar-reducer';
+import {useSelector} from "react-redux";
+import {RootState} from "../../redux/redux-store";
+import {FriendsType} from "../../redux/navbar-reducer";
 
 
 const Navbar = () => {
 
     // let sideBar = props.state.sidebar.map(item => <Friends name={item.name}/>)
-
+    let friends = useSelector<RootState, Array<FriendsType>>(state => state.navbar)
     return (
         <nav className={s.nav}>
             <div className={s.item}>
@@ -34,7 +35,7 @@ const Navbar = () => {
             <div className={s.friendsContainer}>
                 <h2>Friends</h2>
                 <div className={s.friendsItem}>
-                    {/*{sideBar}*/}
+                    {friends.map(f => <Friends name={f.name}/>)}
                 </div>
             </div>
         </nav>

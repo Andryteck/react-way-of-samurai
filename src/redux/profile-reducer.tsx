@@ -84,8 +84,8 @@ export let getStatus = (userId: number) => (dispatch: Function) => {
 }
 export let updateStatus = (status: string) => (dispatch: Function) => {
     profileAPI.updateStatus(status).then(response => {
-        if (response.data.resultCode === 1) {
-            dispatch(setStatus(response.data))
+        if (response.data.resultCode === 0) {
+            dispatch(setStatus(status))
         }
 
     })
