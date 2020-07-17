@@ -17,6 +17,10 @@
 
 .app-wrapper-content {
   grid-area: c;
-  background-color: cornflowerblue;
-
+  background-color: white;
+  width: 100%;
+  max-width: 1020px;
+  padding: 0 40px;
+  margin: 0 auto;
+  box-sizing: border-box;
 }

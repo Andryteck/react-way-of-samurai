@@ -1,6 +1,7 @@
 .error textarea {
     border: 2px solid red;
 }
+
 .error input {
     border: 2px solid red;
 }
@@ -13,4 +14,48 @@
     border: red 1px solid;
     padding: 5px;
     color: rosybrown;
+}
+
+.myPostTextarea {
+    width: 812px;
+    height: 33px;
+
+    padding-left: 37px;
+    margin-top: 15px;
+    padding-top: 15px;
+
+    background: #FFFFFF;
+    border: 0.5px solid rgba(5, 148, 143, 0.8);
+    border-radius: 20px;
+}
+
+.loginInput {
+    margin-top: 16px;
+    width: 347px;
+    height: 36px;
+    background: #FFFFFF;
+    border: 0.5px solid rgba(5, 148, 143, 0.8);
+    box-sizing: border-box;
+    border-radius: 20px;
+}
+
+.checkboxItem {
+    margin-top: 16px;
+    width: 347px;
+}
+
+.loginButton {
+    width: 102px;
+    height: 36px;
+    margin-top: 16px;
+
+    /* Green/50 */
+    background: rgba(5, 148, 143, 0.8);
+    border-radius: 20px;
+
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 22px;
 }

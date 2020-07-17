@@ -1,0 +1,40 @@
+.loginItems {
+    height: 600px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.socialNetworkProject {
+    width: 576px;
+    height: 122px;
+    left: 223px;
+    top: 472px;
+
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 50px;
+    line-height: 61px;
+
+    color: #000000;
+}
+
+.loginForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h1 {
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 40px;
+    line-height: 49px;
+}
+
+.checkboxItem {
+    display: flex;
+
+}

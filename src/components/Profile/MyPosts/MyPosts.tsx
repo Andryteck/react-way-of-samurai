@@ -5,6 +5,7 @@ import {PostDataType} from "../../../redux/profile-reducer";
 import {reduxForm, Field} from "redux-form";
 import {maxLengthCreator, required} from "../../../utils/validators/validators";
 import Textarea from "../../common/FormsControls/FormsControls";
+import MyPostTextarea from "../../common/FormsControls/FormsControls";
 
 const maxLength10 = maxLengthCreator(10)
 
@@ -27,7 +28,7 @@ const MyPosts = (props: PropsType) => {
 
     return (
         <div className={s.postsBlock}>
-            <h3>My posts</h3>
+
             <div>
                 <AddNewPostFormRedux onSubmit={onAddPost}/>
             </div>
@@ -42,7 +43,7 @@ function AddNewPostForm(props: any) {
     return (
         <form onSubmit={props.handleSubmit}>
             <div>
-                <Field name={'newPostText'} component={Textarea} validate={[required, maxLength10]}/>
+                <Field name={'newPostText'} component={MyPostTextarea} validate={[required, maxLength10]} placeholder={'What’s new'}/>
             </div>
             <div>
                 <button>Add post</button>

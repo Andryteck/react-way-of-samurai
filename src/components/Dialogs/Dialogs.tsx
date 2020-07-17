@@ -6,7 +6,7 @@ import Message from "./Message/Message";
 import {MessagesPageType,} from '../../redux/dialogs-reducer';
 import {Field, reduxForm} from "redux-form";
 import {maxLengthCreator, required} from "../../utils/validators/validators";
-import Textarea from "../common/FormsControls/FormsControls";
+import MyPostTextarea from "../common/FormsControls/FormsControls";
 
 
 export type PropsType = {
@@ -51,7 +51,7 @@ export default Dialogs
         return (
             <form onSubmit={props.handleSubmit}>
                 <div>
-                    <Field component={Textarea} name={'newMessageBody'} validate={[required,maxLength50]} placeholder={'enter you message'}/>
+                    <Field component={MyPostTextarea} name={'newMessageBody'} validate={[required,maxLength50]} placeholder={'enter you message'}/>
                 </div>
                 <div>
                     <button>send</button>
