@@ -24,7 +24,9 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    position: relative;
 }
+
 
 h1 {
     font-family: Montserrat;
@@ -34,7 +36,43 @@ h1 {
     line-height: 49px;
 }
 
-.checkboxItem {
+.loginButton {
+    width: 102px;
+    height: 36px;
+
+
+    /* Green/50 */
+    background: rgba(5, 148, 143, 0.8);
+    border-radius: 20px;
+
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 22px;
+    margin-top: 30px;
+}
+
+.formSummaryError {
+    border: red 1px solid;
+    padding: 5px;
+    color: rosybrown;
+}
+
+.checkboxItems {
     display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 92px;
+    height: 15px;
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 15px;
+    margin-top: 15px;
+    position: absolute;
+    top: 75%;
+    left: 0%;
 
 }

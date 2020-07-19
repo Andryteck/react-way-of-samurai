@@ -7,7 +7,6 @@ import {required} from "../utils/validators/validators";
 import {maxLength50} from "../components/Dialogs/Dialogs";
 import {Redirect} from "react-router-dom";
 import {login} from "../redux/auth-reducer";
-import styles from "./../components/common/FormsControls/FormControls.module.css";
 import s from './Login.module.css'
 
 // type PropsType = {
@@ -26,15 +25,15 @@ function LoginForm(props: any) {
                 <Field validate={[required, maxLength50]} placeholder={'Password'} name={'password'} component={Input}
                        type={'password'}/>
             </div>
-            <div className={styles.checkboxItem}>
-                <Field type={'checkbox'} name={'rememberMe'} component={InputCheckbox}/> remember me
+            <div className={s.checkboxItems}>
+                <Field type={'checkbox'} name={'rememberMe'} component={InputCheckbox} /> remember me
             </div>
-            { props.error && <div className={styles.formSummaryError}>
+            { props.error && <div className={s.formSummaryError}>
                 {props.error}
             </div>
             }
             <div>
-                <button className={styles.loginButton}>Login</button>
+                <button className={s.loginButton}>Login</button>
             </div>
         </form>
     )

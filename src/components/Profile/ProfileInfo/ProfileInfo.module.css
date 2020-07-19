@@ -2,6 +2,10 @@
     padding: 10px;
 }
 .pageAvatar {
-    width: 200px;
-    height: 200px;
+    width: 216px;
+    height: 216px;
+
+    border: 1px solid rgba(5, 148, 143, 0.8);
+    box-sizing: border-box;
+    border-radius: 50%;
 }

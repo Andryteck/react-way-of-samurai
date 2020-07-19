@@ -12,10 +12,15 @@
 
 }
 .dialog {
-    color: white;
+    color: rgba(5,148,143,.8);
+}
+.dialog a{
+    color: rgba(5,148,143,.8);
 }
 .messages {
     padding: 10px;
+    width: 300px;
+
 }
 .message {
     color: white;

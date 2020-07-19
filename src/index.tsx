@@ -10,7 +10,7 @@ import {HashRouter} from "react-router-dom";
 
     ReactDOM.render(
         <React.StrictMode>
-            <HashRouter>
+            <HashRouter basename={process.env.PUBLIC_URL}>
             <Provider store={store}>
                 <App/>
             </Provider>

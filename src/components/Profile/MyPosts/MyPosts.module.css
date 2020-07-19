@@ -5,3 +5,12 @@ padding: 10px;
 .posts {
     margin-top: 10px;
 }
+.addItemButton {
+    margin-top: 25px;
+    width: 135px;
+    height: 36px;
+    /* Green/80 */
+
+    background: rgba(5, 148, 143, 0.8);
+    border-radius: 20px;
+}

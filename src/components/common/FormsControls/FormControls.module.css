@@ -10,11 +10,6 @@
     color: red;
 }
 
-.formSummaryError {
-    border: red 1px solid;
-    padding: 5px;
-    color: rosybrown;
-}
 
 .myPostTextarea {
     width: 812px;
@@ -40,22 +35,6 @@
 }
 
 .checkboxItem {
-    margin-top: 16px;
-    width: 347px;
+  border: red;
 }
 
-.loginButton {
-    width: 102px;
-    height: 36px;
-    margin-top: 16px;
-
-    /* Green/50 */
-    background: rgba(5, 148, 143, 0.8);
-    border-radius: 20px;
-
-    font-family: Montserrat;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 18px;
-    line-height: 22px;
-}

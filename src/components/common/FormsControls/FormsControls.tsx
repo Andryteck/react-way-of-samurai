@@ -43,7 +43,7 @@ export const InputCheckbox = ({input, meta, ...props}: any) => {
     return (
         <div className={s.formControl + ' ' + (hasError ? s.error : '')}>
             <div>
-                <input {...input} {...props} className={s.checkboxInput}/>
+                <input {...input} {...props} className={s.checkboxItem}/>
             </div>
             {hasError && <span>{meta.error}</span>}
         </div>
