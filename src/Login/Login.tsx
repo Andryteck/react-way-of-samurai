@@ -28,6 +28,10 @@ function LoginForm(props: any) {
             <div className={s.checkboxItems}>
                 <Field type={'checkbox'} name={'rememberMe'} component={InputCheckbox} /> remember me
             </div>
+            <div>
+            {props.captchaUrl && <img src={props.captchaUrl} />}
+            {props.captchaUrl && <Field validate={[required, maxLength50]} placeholder={'Symbols from image'} name={'captcha'} component={Input}/>}
+            </div>
             { props.error && <div className={s.formSummaryError}>
                 {props.error}
             </div>
@@ -39,7 +43,7 @@ function LoginForm(props: any) {
     )
 }
 
-const LoginReduxForm = reduxForm({
+const LoginReduxForm: any = reduxForm({
     form: 'login'
 })(LoginForm)
 
@@ -47,7 +51,7 @@ const LoginReduxForm = reduxForm({
 function Login(props: any) {
 
     const onSubmit = (formData: any) => {
-        props.login(formData.email, formData.password, formData.rememberMe)
+        props.login(formData.email, formData.password, formData.rememberMe, formData.captcha)
     }
 
     if (props.isAuth) return <Redirect to={'/profile'}/>
@@ -55,7 +59,7 @@ function Login(props: any) {
     return (
         <div className={s.loginItems}>
             <div className={s.socialNetworkProject}>Andrew Kulik <br/>Social Network</div>
-            <LoginReduxForm onSubmit={onSubmit}/>
+            <LoginReduxForm onSubmit={onSubmit} captchaUrl={props.captchaUrl}/>
         </div>
     )
 }
@@ -63,7 +67,8 @@ function Login(props: any) {
 
 const mapStateToProps = (state: RootState) => {
     return {
-        isAuth: state.auth.isAuth
+        isAuth: state.auth.isAuth,
+        captchaUrl: state.auth.captchaUrl
     }
 }
 

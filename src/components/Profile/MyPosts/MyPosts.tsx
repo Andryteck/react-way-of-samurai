@@ -2,7 +2,7 @@ import React from 'react';
 import s from './MyPosts.module.css';
 import Post from './Post/Post';
 import {PostDataType} from "../../../redux/profile-reducer";
-import {reduxForm, Field} from "redux-form";
+import {reduxForm, Field, reset} from "redux-form";
 import {maxLengthCreator, required} from "../../../utils/validators/validators";
 import MyPostTextarea from "../../common/FormsControls/FormsControls";
 
@@ -14,6 +14,7 @@ export type PropsType = {
     }
     // newPostText: string
     addPost: (values: string) => void
+
 }
 
 
@@ -42,7 +43,8 @@ function AddNewPostForm(props: any) {
     return (
         <form onSubmit={props.handleSubmit}>
             <div>
-                <Field name={'newPostText'} component={MyPostTextarea} validate={[required, maxLength10]} placeholder={'What’s new'}/>
+                <Field name={'newPostText'} component={MyPostTextarea} validate={[required, maxLength10]}
+                       placeholder={'What’s new'}/>
             </div>
             <div>
                 <button className={s.addItemButton}>Add post</button>
@@ -51,6 +53,8 @@ function AddNewPostForm(props: any) {
     )
 }
 
-let AddNewPostFormRedux = reduxForm({form: 'ProfileAddNewPostForm'})(AddNewPostForm)
+const afterSubmit = (result: any, dispatch: Function) =>
+    dispatch(reset('ProfileAddNewPostForm'));
+let AddNewPostFormRedux = reduxForm({form: 'ProfileAddNewPostForm', onSubmitSuccess: afterSubmit})(AddNewPostForm)
 
 export default MyPosts;

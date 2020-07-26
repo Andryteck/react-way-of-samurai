@@ -1,23 +1,41 @@
 .nav {
     grid-area: n;
-    background-color: burlywood;
-    padding: 20px;
+    background-color: white;
+    border-right: 0.5px solid #000000;
+    margin: 40px 20px;
 
 }
+.item {
+    margin-top: 12px;
+}
 
-.item a{
-    color: white;
+.item a {
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 20px;
+    /* identical to box height */
+
+
+    color: #000000;
     text-decoration: none;
+    margin-left: 45px;
 }
 
 .item a.activeLink {
-    color: gold;
+    color: #05948F;
 }
+
 .friendsContainer {
     margin-top: 15rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .friendsItem {
-    display: flex;
-    justify-content: space-around;
+    /*display: flex;*/
+    /*justify-content: space-around;*/
 }

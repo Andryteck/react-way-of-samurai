@@ -32,12 +32,12 @@ const Navbar = () => {
             <div className={s.item}>
                 <NavLink to='/settings' activeClassName={s.activeLink}>Settings</NavLink>
             </div>
-            <div className={s.friendsContainer}>
-                <h2>Friends</h2>
-                <div className={s.friendsItem}>
-                    {friends.map(f => <Friends name={f.name}/>)}
-                </div>
-            </div>
+            {/*<div className={s.friendsContainer}>*/}
+            {/*    <h2>Friends</h2>*/}
+            {/*    <div className={s.friendsItem}>*/}
+            {/*        {friends.map(f => <Friends name={f.name}/>)}*/}
+            {/*    </div>*/}
+            {/*</div>*/}
         </nav>
     )
 }

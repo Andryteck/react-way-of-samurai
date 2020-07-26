@@ -61,9 +61,9 @@ h1 {
 
 .checkboxItems {
     display: flex;
-    justify-content: space-around;
+    justify-content: flex-start;
     align-items: center;
-    width: 92px;
+    width: 347px;
     height: 15px;
     font-family: Montserrat;
     font-style: normal;
@@ -71,8 +71,8 @@ h1 {
     font-size: 12px;
     line-height: 15px;
     margin-top: 15px;
-    position: absolute;
-    top: 75%;
-    left: 0%;
+    /*position: absolute;*/
+    /*top: 75%;*/
+    /*left: 0%;*/
 
 }

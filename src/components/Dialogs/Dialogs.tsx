@@ -4,7 +4,7 @@ import {Redirect} from "react-router-dom";
 import DialogItem from './DialogItem/DialogItem'
 import Message from "./Message/Message";
 import {MessagesPageType,} from '../../redux/dialogs-reducer';
-import {Field, reduxForm} from "redux-form";
+import {Field, reduxForm, reset} from "redux-form";
 import {maxLengthCreator, required} from "../../utils/validators/validators";
 import MyPostTextarea from "../common/FormsControls/FormsControls";
 
@@ -60,4 +60,7 @@ export default Dialogs
         )
     }
 
-const AddMessageFormRedux = reduxForm({form: 'dialogAddMessageForm'})(AddMessageForm)
+
+const afterSubmit = (result: any, dispatch: Function) =>
+    dispatch(reset('dialogAddMessageForm'));
+const AddMessageFormRedux = reduxForm({form: 'dialogAddMessageForm',onSubmitSuccess: afterSubmit})(AddMessageForm)

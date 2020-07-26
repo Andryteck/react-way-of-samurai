@@ -32,6 +32,17 @@
     border: 0.5px solid rgba(5, 148, 143, 0.8);
     box-sizing: border-box;
     border-radius: 20px;
+
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 15px;
+    padding: 0 15px;
+    /* identical to box height */
+
+
+    color: #C4C4C4;
 }
 
 .checkboxItem {
