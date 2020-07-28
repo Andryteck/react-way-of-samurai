@@ -7,6 +7,7 @@ import {MessagesPageType,} from '../../redux/dialogs-reducer';
 import {Field, reduxForm, reset} from "redux-form";
 import {maxLengthCreator, required} from "../../utils/validators/validators";
 import MyPostTextarea from "../common/FormsControls/FormsControls";
+import avaImg from "../../assets/images/ava-small.jpg";
 
 
 export type PropsType = {
@@ -15,14 +16,15 @@ export type PropsType = {
     isAuth: boolean
 }
 
+const ava = {
+    color: 'blue',
+    backgroundImage: 'url(' + avaImg + ')',
+
+};
+
 export const maxLength50 = maxLengthCreator(50)
 
 const Dialogs = (props: PropsType) => {
-
-    let dialogElement = props.messagesPage.dialogData.map(dialog => <DialogItem name={dialog.name}
-                                                                                id={dialog.id}/>)
-    let messagesElement = props.messagesPage.messagesData.map(message => <Message message={message.message}/>)
-
 
     if (!props.isAuth) return <Redirect to={'/login'}/>
 
@@ -31,15 +33,29 @@ const Dialogs = (props: PropsType) => {
     }
 
     return (
-        <div className={s.dialogs}>
-            <div className={s.dialogsItems}>
-                {dialogElement}
-            </div>
-            <div className={s.messages}>
-                <div>  {messagesElement} </div>
+        <div className={s.dialogWrapper}>
+            {/*<div className={s.dialogs}>*/}
+            {/*<div className={s.dialogsItems}>*/}
+            {/*    {dialogElement}*/}
+            {/*    {messagesElement}*/}
+            {/*</div>*/}
+            {/*<div className={s.messages}>*/}
+            {/*    /!*<div>  {messagesElement} </div>*!/*/}
+            {/*</div>*/}
+            {/*</div>*/}
+            { props.messagesPage.dialogData.map(d => {
+            return  <div className={s.item} key={d.id}>
                 <div>
-                    <AddMessageFormRedux onSubmit={addNewMessage}/>
+                    <img style={ava}/>
+                    <DialogItem name={d.name}
+                                id={d.id}/>
                 </div>
+                <p>{d.message}</p>
+            </div>
+            })
+            }
+            <div>
+                <AddMessageFormRedux onSubmit={addNewMessage}/>
             </div>
         </div>
     )
@@ -54,7 +70,7 @@ export default Dialogs
                     <Field component={MyPostTextarea} name={'newMessageBody'} validate={[required,maxLength50]} placeholder={'enter you message'}/>
                 </div>
                 <div>
-                    <button>send</button>
+                    <button className={s.sendButton}>send</button>
                 </div>
             </form>
         )

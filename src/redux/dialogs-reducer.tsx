@@ -1,25 +1,21 @@
-import {DialogsDataType, MessagesDataType} from "./store";
-
 const SEND_MESSAGE: string = 'SEND_MESSAGE';
 
+
+type DialogsDataType = {
+    id: number,
+    name: string,
+    message: string
+}
 export type MessagesPageType = {
-    messagesData: Array<MessagesDataType>,
     dialogData: Array<DialogsDataType>,
 }
 
 let initialState: MessagesPageType = {
-    messagesData:
-        [
-            {id: 1, message: 'Hi'},
-            {id: 2, message: 'yoyoyo'},
-            {id: 3, message: 'Wai'},
-            {id: 4, message: 'yoyoyooyoy'}
-        ],
     dialogData: [
-        {id: 1, name: 'Dima'},
-        {id: 2, name: 'Andrei'},
-        {id: 3, name: 'Sveta'},
-        {id: 4, name: 'Sacha'}
+        {id: 1, name: 'Dima', message: 'Hi'},
+        {id: 2, name: 'Andrei', message: 'yoyoyo'},
+        {id: 3, name: 'Sveta', message: 'Wai'},
+        {id: 4, name: 'Sasha', message: 'yoyoyooyoy'}
     ]
 }
 
@@ -35,7 +31,7 @@ const dialogsReducer = (state = initialState, action: any) => {
         case SEND_MESSAGE:
             return {
                 ...state,
-                messagesData: [...state.messagesData, {id: 6, message: action.newMessageBody}],
+                dialogData: [...state.dialogData, {id: 5, name: 'Anna',message: action.newMessageBody}]
             }
 
         // let body = state.newMessageBody
