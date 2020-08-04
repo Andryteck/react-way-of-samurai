@@ -1,10 +1,37 @@
+import dimych from '../assets/images/dimych.jpg'
+import sveta from '../assets/images/sveta.jpg'
+import froga from '../assets/images/froga.jpg'
+import yoda from '../assets/images/yoda.jpg'
+
+const ava1 = {
+    color: 'blue',
+    backgroundImage: 'url(' + dimych + ')',
+
+};
+const ava2 = {
+    color: 'blue',
+    backgroundImage: 'url(' + sveta + ')',
+
+};
+const ava3 = {
+    color: 'blue',
+    backgroundImage: 'url(' + froga + ')',
+
+};
+const ava4 = {
+    color: 'blue',
+    backgroundImage: 'url(' + yoda + ')',
+
+};
+
 const SEND_MESSAGE: string = 'SEND_MESSAGE';
 
 
 type DialogsDataType = {
     id: number,
     name: string,
-    message: string
+    message: string,
+    ava: any
 }
 export type MessagesPageType = {
     dialogData: Array<DialogsDataType>,
@@ -12,10 +39,10 @@ export type MessagesPageType = {
 
 let initialState: MessagesPageType = {
     dialogData: [
-        {id: 1, name: 'Dima', message: 'Hi'},
-        {id: 2, name: 'Andrei', message: 'yoyoyo'},
-        {id: 3, name: 'Sveta', message: 'Wai'},
-        {id: 4, name: 'Sasha', message: 'yoyoyooyoy'}
+        {id: 1, name: 'Dimych', message: 'Тестовое сделал?', ava: ava1},
+        {id: 2, name: 'Sveta', message: 'Купи молока', ava: ava2},
+        {id: 3, name: 'Froga', message: 'Хозяин я погрызла твой любимый стул(', ava: ava3},
+        {id: 4, name: 'Yoda', message: 'МурМяу!', ava: ava4}
     ]
 }
 

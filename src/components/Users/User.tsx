@@ -14,50 +14,41 @@ type PropsType = {
 const User = (props: PropsType) => {
     let u = props.user
     return (
-        <div>
-                    <span>
-                        <div>
-                            <NavLink to={'./profile/' + u.id}>
-                            <img className={styles.usersPhoto}
-                                 src={u.photos.small !== null ? u.photos.small : userImage}/>
-                                  </NavLink>
-                        </div>
-                        <div>
-                            {u.followed
-                                ? <button disabled={props.followingInProgress.some(id => id === u.id)}
-                                          onClick={() => {
-                                              props.unfollow(u.id)
-                                              // axios.delete(`https://social-network.samuraijs.com/api/1.0/follow/${u.id}`, {
-                                              //     withCredentials: true,
-                                              //     headers: {
-                                              //         'API-KEY': '18300c65-a005-4e58-817e-a7be6c453c64'
-                                              //     }
-                                              // })
-                                          }}>Unfollow</button>
-                                : <button disabled={props.followingInProgress.some(id => id === u.id)}
-                                          onClick={() => {
-                                              props.follow(u.id)
-                                              // axios.post(`https://social-network.samuraijs.com/api/1.0/follow/${u.id}`, {}, {
-                                              //     withCredentials: true,
-                                              //     headers: {
-                                              //         'API-KEY': '18300c65-a005-4e58-817e-a7be6c453c64'
-                                              //     }
-                                              // })
-                                          }}
-                                >Follow</button>}
+        <div className={styles.userWrapper}>
+            <div>
+                <NavLink to={'./profile/' + u.id}>
+                    <img className={styles.usersPhoto}
+                         src={u.photos.small !== null ? u.photos.small : userImage}/>
+                </NavLink>
+            </div>
+            <div className={styles.userName}>{u.name}</div>
+            <div>
+                {u.followed
+                    ? <button disabled={props.followingInProgress.some(id => id === u.id)}
+                              className={styles.unfollowButton}
+                              onClick={() => {
+                                  props.unfollow(u.id)
+                                  // axios.delete(`https://social-network.samuraijs.com/api/1.0/follow/${u.id}`, {
+                                  //     withCredentials: true,
+                                  //     headers: {
+                                  //         'API-KEY': '18300c65-a005-4e58-817e-a7be6c453c64'
+                                  //     }
+                                  // })
+                              }}>&#10003; Followed</button>
+                    : <button disabled={props.followingInProgress.some(id => id === u.id)}
+                              className={styles.followButton}
+                              onClick={() => {
+                                  props.follow(u.id)
+                                  // axios.post(`https://social-network.samuraijs.com/api/1.0/follow/${u.id}`, {}, {
+                                  //     withCredentials: true,
+                                  //     headers: {
+                                  //         'API-KEY': '18300c65-a005-4e58-817e-a7be6c453c64'
+                                  //     }
+                                  // })
+                              }}
+                    >&#10010; Follow</button>}
 
-                                </div>
-                                </span>
-            <span>
-                                <span>
-                                <div>{u.name}</div>
-                                <div>{u.status}</div>
-                                </span>
-                                <span>
-                                <div>{u.city}</div>
-                                <div>{u.city}</div>
-                                </span>
-                                </span>
+            </div>
         </div>
     )
 }

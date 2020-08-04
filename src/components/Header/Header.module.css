@@ -1,14 +1,22 @@
 .header {
     grid-area: h;
     background-color: #05948F;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
-
+.header span{
+    padding-left: 10px;
+}
 .header img {
     width: 20px;
 }
 .loginBlock {
+    width: 140px;
+    height: 40px;
+    display: flex;
     float: right;
 }
-loginBlock a {
-    color: white;
+.loginBlock div:hover {
+    background-color: rgb(0, 102, 102);
 }

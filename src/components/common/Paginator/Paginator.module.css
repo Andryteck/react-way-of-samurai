@@ -1,12 +1,44 @@
 .selectedPage {
+    display: inline-block;
     font-weight: bold;
     border-color: black;
+    background: rgba(5, 148, 143, 0.8);
+    border-radius: 50%;
+    display: inline-block;
+    width: 32px;
+    height: 32px;
+    background-repeat: no-repeat;
+    background-position: center center;
 }
 
 .paginator {
-    margin: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    padding: 40px 40px 20px 40px;
+
+    width: 640px;
+    height: 32px;
+
+
 }
 .pageNumber {
-    padding: 2px;
-    border: 1px solid grey;
+    border: 1px solid  rgba(5, 148, 143, 0.8);
+    border-radius: 50%;
+    display: inline-block;
+    width: 32px;
+    height: 32px;
+    background-color: white;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+.changePaginatorBtn {
+    border: 1px solid  rgba(5, 148, 143, 0.8);
+    border-radius: 50%;
+    display: inline-block;
+    width: 32px;
+    height: 32px;
+    background-color: white;
+    background-repeat: no-repeat;
+    background-position: center center;
 }

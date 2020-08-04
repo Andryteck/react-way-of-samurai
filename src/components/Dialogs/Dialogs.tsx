@@ -7,18 +7,19 @@ import {MessagesPageType,} from '../../redux/dialogs-reducer';
 import {Field, reduxForm, reset} from "redux-form";
 import {maxLengthCreator, required} from "../../utils/validators/validators";
 import MyPostTextarea from "../common/FormsControls/FormsControls";
-import avaImg from "../../assets/images/ava-small.jpg";
 
 
 export type PropsType = {
     messagesPage: MessagesPageType
-    sendMessage: (newMessageBody:string) => void
+    sendMessage: (newMessageBody: string) => void
     isAuth: boolean
 }
 
-const ava = {
+
+const DialogsFormStyle = {
     color: 'blue',
-    backgroundImage: 'url(' + avaImg + ')',
+    width: '925px',
+    marginTop: '60px'
 
 };
 
@@ -43,15 +44,15 @@ const Dialogs = (props: PropsType) => {
             {/*    /!*<div>  {messagesElement} </div>*!/*/}
             {/*</div>*/}
             {/*</div>*/}
-            { props.messagesPage.dialogData.map(d => {
-            return  <div className={s.item} key={d.id}>
-                <div>
-                    <img style={ava}/>
-                    <DialogItem name={d.name}
-                                id={d.id}/>
+            {props.messagesPage.dialogData.map(d => {
+                return <div className={s.item} key={d.id}>
+                        <img style={d.ava}/>
+                        <div className={s.messageItemWrapper}>
+                            <DialogItem name={d.name}
+                                        id={d.id}/>
+                        <p>{d.message}</p>
+                        </div>
                 </div>
-                <p>{d.message}</p>
-            </div>
             })
             }
             <div>
@@ -63,20 +64,21 @@ const Dialogs = (props: PropsType) => {
 
 export default Dialogs
 
-    const AddMessageForm = (props: any) => {
-        return (
-            <form onSubmit={props.handleSubmit}>
-                <div>
-                    <Field component={MyPostTextarea} name={'newMessageBody'} validate={[required,maxLength50]} placeholder={'enter you message'}/>
-                </div>
-                <div>
-                    <button className={s.sendButton}>send</button>
-                </div>
-            </form>
-        )
-    }
+const AddMessageForm = (props: any) => {
+    return (
+        <form onSubmit={props.handleSubmit}>
+            <div>
+                <Field component={MyPostTextarea} name={'newMessageBody'} validate={[required, maxLength50]}
+                       placeholder={'enter you message'} style={DialogsFormStyle}/>
+            </div>
+            <div>
+                <button className={s.sendButton}>send</button>
+            </div>
+        </form>
+    )
+}
 
 
 const afterSubmit = (result: any, dispatch: Function) =>
     dispatch(reset('dialogAddMessageForm'));
-const AddMessageFormRedux = reduxForm({form: 'dialogAddMessageForm',onSubmitSuccess: afterSubmit})(AddMessageForm)
+const AddMessageFormRedux = reduxForm({form: 'dialogAddMessageForm', onSubmitSuccess: afterSubmit})(AddMessageForm)

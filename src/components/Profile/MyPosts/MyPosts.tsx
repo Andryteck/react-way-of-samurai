@@ -20,7 +20,7 @@ export type PropsType = {
 
 const MyPosts = (props: PropsType) => {
     let postElement =
-        props.postData.postData.map((post: any) => <Post message={post.message} likesCount={post.likesCount}/>)
+        props.postData.postData.map((post: any) => <Post message={post.message} likesCount={post.likesCount} key={post.id}/>)
 
     const onAddPost = (values: any) => {
         props.addPost(values.newPostText)

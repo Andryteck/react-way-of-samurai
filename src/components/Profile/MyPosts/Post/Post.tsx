@@ -32,7 +32,7 @@ const Post = (props: propsType) => {
                 <img style={ava}/>
                 <span className={s.postName}> Andrei Kulik</span>
             </div>
-            <p> {props.message} </p>
+            <p className={s.postMessage}> {props.message} </p>
             <div className={s.likeBtns}>
                 <div style={share} className={s.share}></div>
                 <span className={s.likeCount}>4</span>
