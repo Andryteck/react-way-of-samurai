@@ -26,13 +26,15 @@ function LoginForm(props: any) {
                        type={'password'}/>
             </div>
             <div className={s.checkboxItems}>
-                <Field type={'checkbox'} name={'rememberMe'} component={InputCheckbox} /> remember me
+                <Field type={'checkbox'} name={'rememberMe'} component={InputCheckbox}/> remember me
             </div>
             <div>
-            {props.captchaUrl && <img src={props.captchaUrl} />}
-            {props.captchaUrl && <Field validate={[required, maxLength50]} placeholder={'Symbols from image'} name={'captcha'} component={Input}/>}
+                {props.captchaUrl && <img src={props.captchaUrl}/>}
+                {props.captchaUrl &&
+                <Field validate={[required, maxLength50]} placeholder={'Symbols from image'} name={'captcha'}
+                       component={Input}/>}
             </div>
-            { props.error && <div className={s.formSummaryError}>
+            {props.error && <div className={s.formSummaryError}>
                 {props.error}
             </div>
             }
@@ -58,7 +60,11 @@ function Login(props: any) {
 
     return (
         <div className={s.loginItems}>
-            <div className={s.socialNetworkProject}>Andrew Kulik <br/>Social Network</div>
+            <div className={s.loginTitleWrapper}>
+                <p className={s.socialNetworkProjectTitle}>Andrew Kulik <br/>Social Network <br/></p>
+                <p className={s.socialNetworkProjectSubTitle}>For test:<br/>login: Andry_teck@mail.ru <br/> password:
+                    772316</p>
+            </div>
             <LoginReduxForm onSubmit={onSubmit} captchaUrl={props.captchaUrl}/>
         </div>
     )
