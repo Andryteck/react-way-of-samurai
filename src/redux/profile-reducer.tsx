@@ -10,18 +10,19 @@ type ProfilePageType = {
 }
 
 export type PostDataType = {
-    id?: number,
-    message?: string,
-    likesCount?: number
+    id: number,
+    message: string,
+    likesCount: number,
+    isRed: boolean
 }
 
 let initialState: ProfilePageType = {
 
     postData: [
-        {id: 1, message: 'hi', likesCount: 12},
-        {id: 2, message: 'its my first post', likesCount: 13},
-        {id: 3, message: 'its my second post', likesCount: 14},
-        {id: 4, message: 'its my three post', likesCount: 15}
+        {id: 1, message: 'hi', likesCount: 12, isRed: true},
+        {id: 2, message: 'its my first post', likesCount: 13, isRed: false},
+        {id: 3, message: 'its my second post', likesCount: 14, isRed: false},
+        {id: 4, message: 'its my three post', likesCount: 15, isRed: false}
     ],
     profile: null,
     status: '',
@@ -35,7 +36,8 @@ const profileReducer = (state = initialState, action: ActionType): ProfilePageTy
             let newPost = {
                 id: 5,
                 message: action.newPostText,
-                likesCount: 2
+                likesCount: 2,
+                isRed: false
             }
             return {
                 ...state,
@@ -57,7 +59,31 @@ const profileReducer = (state = initialState, action: ActionType): ProfilePageTy
                 ...state,
                 profile: {...state.profile, photos: action.photos}
             }
+        case "TOGGLE-LIKE":
+            if (!action.isRed) {
+                return {
+                    ...state,
+                    postData: [
+                        ...state.postData.map(p => p.id === action.postId ? {
+                            ...p,
+                            likesCount: action.likesCount + 1,
+                            isRed: !action.isRed
+                        } : p)
+                    ],
 
+                }
+            } else {
+                return {
+                    ...state,
+                    postData: [
+                        ...state.postData.map(p => p.id === action.postId ? {
+                            ...p,
+                            likesCount: action.likesCount - 1,
+                            isRed: !action.isRed
+                        } : p)
+                    ]
+                }
+            }
         default:
             return state
     }
@@ -81,6 +107,9 @@ export const actions = {
     } as const),
     savePhotoSuccess: (photos: any) => ({
         type: 'SAVE_PHOTO_SUCCESS', photos
+    } as const),
+    postCountAC: (postId: number | undefined, likesCount: number, isRed: boolean) => ({
+        type: 'TOGGLE-LIKE', postId, likesCount, isRed
     } as const)
 }
 // Thunk
@@ -100,9 +129,8 @@ export let updateStatus = (status: string) => async (dispatch: Function) => {
         if (res.data.resultCode === 0) {
             dispatch(actions.setStatus(status))
         }
-    }
-    catch (e) {
-        
+    } catch (e) {
+
     }
 }
 export let savePhoto = (file: any) => async (dispatch: Function) => {
