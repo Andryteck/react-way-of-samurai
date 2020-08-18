@@ -1,39 +1,39 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "ba0485a964802f05d5846c86dbd42ff3",
+    "revision": "4dea26dfe58b87f14117e893dc685b3f",
     "url": "/react-way-of-samurai/index.html"
   },
   {
-    "revision": "0f421322207f51a62849",
-    "url": "/react-way-of-samurai/static/css/3.63d4eed3.chunk.css"
+    "revision": "1c875207f81ed7215aac",
+    "url": "/react-way-of-samurai/static/css/3.e1786eed.chunk.css"
   },
   {
-    "revision": "898bb5a7749eba71c569",
+    "revision": "008e426436634d106476",
     "url": "/react-way-of-samurai/static/css/main.d6f02436.chunk.css"
   },
   {
-    "revision": "37dbd4a532e6dfc03f97",
-    "url": "/react-way-of-samurai/static/js/2.150ca956.chunk.js"
+    "revision": "0663fb7880801743a297",
+    "url": "/react-way-of-samurai/static/js/2.3c20574a.chunk.js"
   },
   {
     "revision": "216e537bacc64f9dbaabd26649a9ab95",
-    "url": "/react-way-of-samurai/static/js/2.150ca956.chunk.js.LICENSE.txt"
+    "url": "/react-way-of-samurai/static/js/2.3c20574a.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "0f421322207f51a62849",
-    "url": "/react-way-of-samurai/static/js/3.2a432ae8.chunk.js"
+    "revision": "1c875207f81ed7215aac",
+    "url": "/react-way-of-samurai/static/js/3.166fbbe7.chunk.js"
   },
   {
-    "revision": "602eff39cb02175b2ae8",
-    "url": "/react-way-of-samurai/static/js/4.33680a63.chunk.js"
+    "revision": "a56e5027614932f9c90b",
+    "url": "/react-way-of-samurai/static/js/4.fc42e394.chunk.js"
   },
   {
-    "revision": "898bb5a7749eba71c569",
-    "url": "/react-way-of-samurai/static/js/main.c5b3a698.chunk.js"
+    "revision": "008e426436634d106476",
+    "url": "/react-way-of-samurai/static/js/main.49b20fbd.chunk.js"
   },
   {
-    "revision": "a1d28a5669f9b9cc92d3",
-    "url": "/react-way-of-samurai/static/js/runtime-main.af198f31.js"
+    "revision": "48ef76a13c84439f6a19",
+    "url": "/react-way-of-samurai/static/js/runtime-main.a2efd044.js"
   },
   {
     "revision": "cf6a3084d27ccd5ad0af0dd466d4e528",

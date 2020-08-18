@@ -1,0 +1,2 @@
+(this["webpackJsonpreact-way-of-samurai"]=this["webpackJsonpreact-way-of-samurai"]||[]).push([[4],{284:function(e,a,s){"use strict";s.r(a);var t=s(121),n=s(10),c=s(72),r=s(96),u=s(8);a.default=Object(u.d)(r.a,Object(n.b)((function(e){return{messagesPage:e.messagesPage}}),(function(e){return{sendMessage:function(a){e(Object(t.b)(a))}}})))(c.a)}}]);
+//# sourceMappingURL=4.fc42e394.chunk.js.map
